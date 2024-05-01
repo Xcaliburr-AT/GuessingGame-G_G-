@@ -1,7 +1,10 @@
 import socket
 
+
 host = "localhost"
 port = 1111
+
+
 
 s = socket.socket()
 s.connect((host, port))

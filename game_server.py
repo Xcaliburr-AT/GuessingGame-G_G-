@@ -63,7 +63,7 @@ while True:
         client_input = conn.recv(1024)
         guess = int(client_input.decode().strip())
         attempts += 1
-        print(f"User guess attempt: {guess}")
+        print(f"{username} guess attempt: {guess}")
 
         if guess == guessme:
             conn.sendall(b"Guessed Correctly!")
