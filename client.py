@@ -1,32 +1,31 @@
 import socket
 
-
 host = "localhost"
 port = 1111
-
-
 
 s = socket.socket()
 s.connect((host, port))
 
-
-#receiving
-data = s.recv(1024)
-
-#print
-print(data.decode().strip())
-
-
-
 while True:
-    #getting input
-    user_input = input("").strip()
+    #receiving
+    data = s.recv(1024)
+    print(data.decode().strip())
 
-    s.sendall(user_input.encode())
-    reply = s.recv(1024).decode().strip()
-    if "Correct" in reply:
-        print(reply)
+    while True:
+        #get input
+        user_input = input("").strip()
+        s.sendall(user_input.encode())
+        reply = s.recv(1024).decode().strip()
+
+        if "Correct" in reply:
+            print(reply)
+            break
+        else:
+            print(reply)
+
+    #play again
+    play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+    if play_again != "yes":
         break
-    print(reply)
-    continue
-s.close
+
+s.close()
